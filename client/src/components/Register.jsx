@@ -15,7 +15,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/register', formData);
+      await axios.post('https://server1-hewu.onrender.com/api/register', formData);
       navigate('/login');
     } catch (err) {
       setMessage(err.response.data.message);
