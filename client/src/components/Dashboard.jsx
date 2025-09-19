@@ -13,7 +13,7 @@ function Dashboard() {
 
   const fetchFiles = async () => {
     const token = localStorage.getItem('token');
-    const res = await axios.get('http://localhost:5000/api/account', {
+    const res = await axios.get('https://server1-hewu.onrender.com/api/account', {
       headers: { Authorization: `Bearer ${token}` },
     });
     setFiles(res.data.files);
@@ -24,7 +24,7 @@ function Dashboard() {
     const token = localStorage.getItem('token');
     const formData = new FormData();
     formData.append('file', file);
-    await axios.post('http://localhost:5000/api/upload', formData, {
+    await axios.post('https://server1-hewu.onrender.com/api/upload', formData, {
       headers: { Authorization: `Bearer ${token}` },
     });
     fetchFiles();
@@ -35,7 +35,7 @@ function Dashboard() {
     const filename = filePath.split('/').pop();
 
     try {
-      await axios.delete(`http://localhost:5000/api/delete/${filename}`, {
+      await axios.delete(`https://server1-hewu.onrender.com/api/delete/${filename}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchFiles();
@@ -55,7 +55,7 @@ function Dashboard() {
 
   const renderFile = (filePath, index) => {
     const extension = filePath.split('.').pop().toLowerCase();
-    const fullPath = `http://localhost:5000${filePath}`;
+    const fullPath = `https://server1-hewu.onrender.com${filePath}`;
     const filename = filePath.split('/').pop();
 
     return (
